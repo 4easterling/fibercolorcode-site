@@ -1,103 +1,189 @@
-/* Fiber Color Code — legal site. No JS, no external requests, no webfonts. */
+/* Fiber Color Code — legal site.
+   Branding mirrors the app: tokens are the literal values from
+   lib/core/theme.dart (FiberTokens), radii from the same file, and the type
+   stack matches the app's platform default (the app sets no fontFamily, so
+   it renders SF on iOS / Roboto on Android).
+   No JS, no webfonts, no external requests — a privacy policy that phones
+   out to a third party on load undercuts its own contents. */
+
 :root {
-  --bg: #FAF8F5;
-  --surface: #FFFFFF;
-  --text: #1C1917;
-  --muted: #5C554D;
-  --border: #D8D1C6;
-  --accent: #B84A00;
-  --accent-soft: #FDF1E7;
-  --radius: 10px;
+  /* FiberTokens — light */
+  --bg:         #FBFAF6;
+  --surface1:   #FFFFFF;
+  --surface2:   #F4F1EB;
+  --stroke:     #E5E1D8;
+  --strokeSoft: #EDE9E1;
+  --text:       #2C2820;
+  --textDim:    #6F6859;
+  --textMute:   #7A7265;
+  --accent:     #FF6D01;  /* fills only — 2.8:1, never for text */
+  --accentText: #B84A00;  /* 5.00:1 on bg — the legible accent */
+  --accentSoft: rgba(255, 109, 1, 0.14);
+  --glow:       rgba(255, 109, 1, 0.45);
+  --success:    #356017;
+
+  /* FiberTokens — radii */
+  --rButton: 12px;
+  --rField:  14px;
+  --rCard:   16px;
+  --rPill:   999px;
 }
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #16130F;
-    --surface: #1F1B17;
-    --text: #F5F1EA;
-    --muted: #ADA69C;
-    --border: #4A4237;
-    --accent: #FF9351;
-    --accent-soft: #2A1D13;
+  :root:not([data-theme="light"]) {
+    --bg:         #1A1814;
+    --surface1:   #211F1A;
+    --surface2:   #28251F;
+    --stroke:     #353128;
+    --strokeSoft: #2D2A23;
+    --text:       #F7F4EF;
+    --textDim:    #B5AC9F;
+    --textMute:   #897F70;
+    --accent:     #FF6D01;
+    --accentText: #FF8A3A;
+    --accentSoft: rgba(255, 109, 1, 0.16);
+    --glow:       rgba(255, 109, 1, 0.40);
+    --success:    #B8D18C;
   }
 }
+:root[data-theme="dark"] {
+  --bg:         #1A1814;
+  --surface1:   #211F1A;
+  --surface2:   #28251F;
+  --stroke:     #353128;
+  --strokeSoft: #2D2A23;
+  --text:       #F7F4EF;
+  --textDim:    #B5AC9F;
+  --textMute:   #897F70;
+  --accent:     #FF6D01;
+  --accentText: #FF8A3A;
+  --accentSoft: rgba(255, 109, 1, 0.16);
+  --glow:       rgba(255, 109, 1, 0.40);
+  --success:    #B8D18C;
+}
+
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif;
+  /* Matches the app: platform default face, not a webfont. */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
   overflow-wrap: break-word;
 }
-.wrap { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+
+.wrap { max-width: 46rem; margin: 0 auto; padding: 2.75rem 1.25rem 5rem; }
+
+/* ── Brand row — mirrors _BrandRow in auth_screen.dart ─────────────────── */
 header.site {
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  border-bottom: 1px solid var(--stroke);
+  background: var(--surface1);
 }
-header.site .wrap { padding: 1.1rem 1.25rem; display: flex; flex-wrap: wrap;
-  gap: .5rem 1.25rem; align-items: baseline; }
-.brand {
-  font-weight: 700; letter-spacing: -0.01em; color: var(--text);
-  text-decoration: none; font-size: 1.05rem;
+header.site .wrap {
+  padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
 }
-.brand span { color: var(--accent); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand .tile {
+  width: 44px; height: 44px; flex: none;
+  border-radius: var(--rField);           /* 14, as in the app */
+  background: var(--accent);
+  box-shadow: 0 8px 20px var(--glow);
+  display: grid; place-items: center;
+}
+.brand .tile svg { width: 22px; height: 22px; fill: #FFFFFF; }
+.brand .words { display: flex; flex-direction: column; gap: 2px; }
+.brand .name {
+  font-size: 16px; font-weight: 700; letter-spacing: -0.2px; color: var(--text);
+  line-height: 1.15;
+}
+.brand .tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+  color: var(--textMute); line-height: 1;
+}
+
 nav { margin-left: auto; display: flex; gap: 1.1rem; flex-wrap: wrap; }
-nav a { color: var(--muted); text-decoration: none; font-size: .93rem; }
-nav a:hover, nav a:focus-visible { color: var(--accent); text-decoration: underline; }
-h1 { font-size: 2rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 .4rem; }
-h2 { font-size: 1.2rem; margin: 2.6rem 0 .6rem; letter-spacing: -0.01em; }
-h3 { font-size: 1rem; margin: 1.6rem 0 .4rem; }
-p, li { color: var(--text); }
-a { color: var(--accent); }
-.eyebrow {
-  text-transform: uppercase; letter-spacing: .09em; font-size: .72rem;
-  font-weight: 700; color: var(--accent); margin: 0 0 .75rem;
+nav a { color: var(--textDim); text-decoration: none; font-size: .93rem; }
+nav a:hover, nav a:focus-visible { color: var(--accentText); text-decoration: underline; }
+
+/* ── Type ─────────────────────────────────────────────────────────────── */
+h1 {
+  font-size: 2rem; line-height: 1.18; letter-spacing: -0.6px;
+  margin: 0 0 .4rem; font-weight: 700; text-wrap: balance;
 }
-.updated { color: var(--muted); font-size: .9rem; margin: 0 0 2rem; }
-.lede { font-size: 1.06rem; color: var(--muted); }
+h2 { font-size: 1.2rem; margin: 2.6rem 0 .6rem; letter-spacing: -0.3px; font-weight: 700; }
+h3 { font-size: 1rem; margin: 1.6rem 0 .4rem; font-weight: 700; letter-spacing: -0.1px; }
+p, li { color: var(--text); }
+a { color: var(--accentText); }
+
+/* Eyebrow — the app's tracked-caps label treatment */
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--accentText); margin: 0 0 .75rem;
+}
+.updated { color: var(--textMute); font-size: .9rem; margin: 0 0 2rem; }
+.lede { font-size: 1.06rem; color: var(--textDim); }
+
+/* ── Surfaces ─────────────────────────────────────────────────────────── */
 table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .93rem; }
-th, td { text-align: left; padding: .6rem .7rem; border-bottom: 1px solid var(--border);
-  vertical-align: top; }
-th { font-size: .74rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
-.scroll { overflow-x: auto; }
+th, td {
+  text-align: left; padding: .6rem .7rem;
+  border-bottom: 1px solid var(--stroke); vertical-align: top;
+}
+th {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px;
+  font-weight: 700; color: var(--textMute);
+}
+.scroll { overflow-x: auto; border-radius: var(--rCard); }
+.scroll:focus-visible { outline: 2px solid var(--accentText); outline-offset: 2px; }
+
 .note {
-  background: var(--accent-soft); border: 1px solid var(--border);
-  border-left: 3px solid var(--accent); border-radius: var(--radius);
+  background: var(--accentSoft);
+  border: 1px solid var(--stroke);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--rCard);
   padding: .95rem 1.1rem; margin: 1.5rem 0;
 }
 .note p { margin: 0; }
 .note p + p { margin-top: .6rem; }
+
 .card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1.25rem 1.4rem; margin: 1.25rem 0;
+  background: var(--surface1); border: 1px solid var(--stroke);
+  border-radius: var(--rCard); padding: 1.25rem 1.4rem; margin: 1.25rem 0;
 }
 .card h3 { margin-top: 0; }
+
 ul, ol { padding-left: 1.25rem; }
 li { margin: .3rem 0; }
+
 code {
-  background: var(--accent-soft); border: 1px solid var(--border);
-  border-radius: 5px; padding: .1em .35em; font-size: .9em;
+  background: var(--surface2); border: 1px solid var(--strokeSoft);
+  border-radius: 6px; padding: .1em .35em; font-size: .9em;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+
 footer.site {
-  border-top: 1px solid var(--border); margin-top: 3.5rem;
-  color: var(--muted); font-size: .88rem;
+  border-top: 1px solid var(--stroke); margin-top: 3.5rem;
+  color: var(--textMute); font-size: .88rem; background: var(--surface1);
 }
 footer.site .wrap { padding: 1.5rem 1.25rem 3rem; }
-footer.site a { color: var(--muted); }
-a:focus-visible, .brand:focus-visible {
-  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px;
-}
+footer.site a { color: var(--textDim); }
 
-/* Skip link — first focusable element, visible only on focus (WCAG 2.4.1) */
+/* ── Focus + skip link ────────────────────────────────────────────────── */
+a:focus-visible, .brand:focus-visible {
+  outline: 2px solid var(--accentText); outline-offset: 3px; border-radius: 4px;
+}
 .skip {
   position: absolute; left: -9999px; top: 0; z-index: 10;
-  background: var(--surface); color: var(--text);
-  border: 2px solid var(--accent); border-radius: 0 0 var(--radius) 0;
+  background: var(--surface1); color: var(--text);
+  border: 2px solid var(--accent);
+  border-radius: 0 0 var(--rButton) 0;
   padding: .7rem 1.1rem; font-weight: 600; text-decoration: none;
 }
 .skip:focus { left: 0; }
-/* A scrollable region must be reachable and operable by keyboard (WCAG 2.1.1) */
-.scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 main:focus { outline: none; }
