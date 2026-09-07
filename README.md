@@ -26,7 +26,7 @@ files** — it would break the in-app links.
 
 ## Presentation
 
-The homepage introduces the product with a hero, an explicitly illustrative splice plan,
+The homepage introduces the product with a hero, actual app screenshots with sample project data,
 a workflow overview, crew use cases, and email calls to action. It uses the existing support
 address until a verified app download or signup destination is supplied. Customer quotes,
 logos, ratings, and usage statistics must come from real, approved sources; none are
@@ -100,3 +100,15 @@ Facts baked in that need updating if they change:
 - Governing law: **Commonwealth of Kentucky**
 - If you incorporate, update the entity name and form in all three documents
 - Some privacy laws expect a postal contact address; none is currently listed
+
+## App screenshots
+
+`assets/screenshots/` contains 860 × 1800 PNG captures of the production Flutter
+`SpliceEditor`, its expanded results sheet, and `SignaturePadModal`. The sample
+project is Vault 12 / North route with a 192-fiber North distribution destination. Both use the count
+`97-108+12XD+121-180+108XD` (72 live fibers and 120 dead positions).
+These contain no customer records. Captures use the app's light theme, Material
+icons, and Roboto device font fallback (rather than Flutter test square glyphs).
+The homepage frames full captures and links cropped detail previews to their full
+images. Replace captures when the corresponding app UI changes; do not redraw
+screens as mockups or add fictional data as customer evidence.
