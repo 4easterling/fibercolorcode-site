@@ -2,7 +2,7 @@
 
 Static product homepage + legal site for the **Fiber Color Code** app, served by GitHub Pages.
 
-No build step, no JavaScript, no external requests. Edit the HTML, push to `main`, done.
+No build step. The homepage uses a small contact-dialog script and submits inquiries to a Firebase HTTPS function. Edit the HTML, CSS, or JavaScript and push to `main` to publish.
 
 ## Why this is a separate repo
 
@@ -27,8 +27,8 @@ files** — it would break the in-app links.
 ## Presentation
 
 The homepage introduces the product with a hero, actual app screenshots with sample project data,
-a workflow overview, crew use cases, and email calls to action. It uses the existing support
-address until a verified app download or signup destination is supplied. Customer quotes,
+a workflow overview, crew use cases, and contact-dialog calls to action. Inquiries are emailed
+to the configured support inbox through the app’s existing Resend service. Customer quotes,
 logos, ratings, and usage statistics must come from real, approved sources; none are
 currently published. Keep the legal documents available in the homepage footer.
 
@@ -115,3 +115,22 @@ screens as mockups or add fictional data as customer evidence.
 
 Screenshot links use content-hash query versions. Refresh each image’s version in
 `index.html` whenever its PNG changes, so returning visitors get the new capture.
+
+## Contact form
+
+All five homepage contact CTAs open the native dialog in `index.html`. `contact.js`
+submits name, email, optional company and phone, message, and CTA source to
+`https://us-central1-fiber-color-code-app.cloudfunctions.net/submitWebsiteContact`.
+The backend is maintained in the private app repository at `functions/src/website_contact.ts`;
+deploy that function before publishing frontend changes that depend on it. It uses
+`RESEND_API_KEY`, `INVITE_FROM_EMAIL`, and `WEBSITE_CONTACT_EMAIL` (default:
+`support@fibercolorcode.app`). No email credentials belong in this public repository.
+
+The form preserves details on failure, prevents duplicate clicks, and reuses a Resend
+idempotency key when retrying unchanged submissions. The backend validates inputs,
+restricts browser origins, discards honeypot submissions, and limits attempts to five
+per hour per IP/email plus 100 per day globally. Rate-limit records contain HMAC hashes
+and counters, not inquiry bodies. Success means the email provider accepted the message.
+
+When editing `contact.js`, update its `?v=` in `index.html` to the first 12 characters
+of the file’s SHA-256 hash, as with the stylesheet.

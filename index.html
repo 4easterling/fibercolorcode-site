@@ -6,7 +6,8 @@
 <meta name="color-scheme" content="light dark">
 <title>Fiber Color Code — Splice plans to signed as-builts</title>
 <meta name="description" content="Build color-coded splice plans, coordinate your crew, and export signed as-builts with Fiber Color Code.">
-<link rel="stylesheet" href="/style.css?v=141b37979835">
+<link rel="stylesheet" href="/style.css?v=795b4f5a1d0e">
+<script src="/contact.js?v=866d6f63e30f" defer></script>
 </head>
 <body class="product-page">
 <a class="skip" href="#main">Skip to content</a>
@@ -22,7 +23,7 @@
     <a href="#workflow">How it works</a>
     <a href="#built-for-crews">For crews</a>
     <a href="/privacy/">Privacy</a>
-    <a class="nav-cta" href="mailto:support@fibercolorcode.app?subject=Get%20started%20with%20Fiber%20Color%20Code">Get in touch <span aria-hidden="true">↗</span></a>
+    <button type="button" class="nav-cta" data-contact>Get in touch <span aria-hidden="true">↗</span></button>
   </nav>
 </div></header>
 
@@ -33,7 +34,7 @@
       <h1 id="hero-title">From the first splice<br>to the final <span>as-built.</span></h1>
       <p class="hero-description">Turn cable details into a clear splice plan. Keep your crew’s work together. Hand over a record you can stand behind.</p>
       <div class="hero-actions">
-        <a class="button button-primary" href="mailto:support@fibercolorcode.app?subject=Get%20started%20with%20Fiber%20Color%20Code">Get started <span aria-hidden="true">↗</span></a>
+        <button type="button" class="button button-primary" data-contact>Get started <span aria-hidden="true">↗</span></button>
         <a class="button button-secondary" href="#workflow">See how it works <span aria-hidden="true">↓</span></a>
       </div>
       <p class="cta-detail">Talk to us about getting your crew set up.</p>
@@ -62,7 +63,7 @@
 
   <section class="crew-section" id="built-for-crews" aria-labelledby="crew-title">
     <div class="wrap crew-layout">
-      <div><p class="eyebrow">Built in the field, for the field</p><h2 id="crew-title">The details change.<br>The work still needs<br>to be clear.</h2><p class="crew-intro">Fiber Color Code is made for the people making connections, coordinating crews, and delivering the finished job.</p><a class="text-link" href="mailto:support@fibercolorcode.app?subject=Fiber%20Color%20Code%20for%20our%20crew">Tell us about your crew <span aria-hidden="true">↗</span></a></div>
+      <div><p class="eyebrow">Built in the field, for the field</p><h2 id="crew-title">The details change.<br>The work still needs<br>to be clear.</h2><p class="crew-intro">Fiber Color Code is made for the people making connections, coordinating crews, and delivering the finished job.</p><button type="button" class="text-link" data-contact>Tell us about your crew <span aria-hidden="true">↗</span></button></div>
       <div class="crew-use-cases">
         <div><span class="role-index">01</span><div><h3>For the technician</h3><p>Bring fiber assignments, plan details, and job photos into one place. Keep color names alongside the colors, so every connection has a clear reference.</p></div></div>
         <div><span class="role-index">02</span><div><h3>For the crew lead</h3><p>Organize work orders and shared plans, assign the work, and keep job records connected to the team doing it.</p></div></div>
@@ -72,13 +73,37 @@
   </section>
 
   <section class="closing-section wrap" aria-labelledby="closing-title">
-    <div class="closing-card"><div><p class="eyebrow">Your next job, better documented</p><h2 id="closing-title">Make the plan.<br>Keep the whole picture.</h2><p>Get in touch to start using Fiber Color Code with your crew.</p></div><a class="button button-primary" href="mailto:support@fibercolorcode.app?subject=Get%20started%20with%20Fiber%20Color%20Code">Let’s get started <span aria-hidden="true">↗</span></a></div>
+    <div class="closing-card"><div><p class="eyebrow">Your next job, better documented</p><h2 id="closing-title">Make the plan.<br>Keep the whole picture.</h2><p>Get in touch to start using Fiber Color Code with your crew.</p></div><button type="button" class="button button-primary" data-contact>Let’s get started <span aria-hidden="true">↗</span></button></div>
   </section>
 </main>
 
 <footer class="site product-footer"><div class="wrap">
   <div><strong>Fiber Color Code</strong><p>Splice plans. Crew coordination. Signed as-builts.</p><small>Operated by Fiber Education, Kentucky, USA.</small></div>
-  <nav aria-label="Legal and support"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a><a href="/delete-account/">Delete account</a><a href="mailto:support@fibercolorcode.app">Contact support</a></nav>
+  <nav aria-label="Legal and support"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Service</a><a href="/delete-account/">Delete account</a><button type="button" data-contact>Contact support</button></nav>
 </div></footer>
+<dialog id="contact-dialog" aria-labelledby="contact-title" aria-describedby="contact-description">
+  <button class="dialog-close" type="button" aria-label="Close contact form">×</button>
+  <p class="eyebrow">Let’s talk</p>
+  <h2 id="contact-title">Get your crew connected.</h2>
+  <p id="contact-description">Tell us a little about yourself and what you need. We’ll get back to you by email.</p>
+  <form id="contact-form">
+    <div class="contact-fields">
+      <label>Name <input name="name" autocomplete="name" maxlength="100" required autofocus></label>
+      <label>Email <input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+      <label>Company / crew <span class="optional">(optional)</span><input name="company" autocomplete="organization" maxlength="150"></label>
+      <label>Phone <span class="optional">(optional)</span><input name="phone" type="tel" autocomplete="tel" maxlength="50"></label>
+    </div>
+    <label class="contact-message">How can we help?<textarea name="message" rows="4" maxlength="5000" required></textarea></label>
+    <div class="contact-trap" aria-hidden="true"><label>Leave this blank<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <p class="contact-privacy">We’ll use these details to respond to your inquiry. <a href="/privacy/" target="_blank" rel="noopener">Privacy Policy</a></p>
+    <p id="contact-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
+    <button class="button button-primary contact-submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+  </form>
+  <div id="contact-success" hidden>
+    <p>Thanks for reaching out. We’ll reply to the email address you provided.</p>
+    <button class="button button-primary" type="button" data-contact-done>Done</button>
+  </div>
+</dialog>
+<noscript><p class="wrap">Please enable JavaScript to use the contact form. You can also reach us at support@fibercolorcode.app.</p></noscript>
 </body>
 </html>

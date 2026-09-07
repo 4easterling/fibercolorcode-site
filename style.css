@@ -1,4 +1,4 @@
-/* Static, self-contained pages. No JavaScript, webfonts, or external requests. */
+/* Shared styles for the product site and legal pages. */
 :root {
   color-scheme: light;
   --bg: #fbfaf6;
@@ -289,4 +289,37 @@ main:focus { outline: none; }
 @media print {
   .app-showcase { max-width: 25rem; }
   .screenshot-detail { break-inside: avoid; }
+}
+
+/* Contact dialog */
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, #contact-status:focus-visible { outline: 2px solid var(--accentText); outline-offset: 4px; }
+
+header.site nav button[data-contact] { border: 0; border-radius: 8px; font-size: 14px; font-weight: 600; }
+button.text-link { background: transparent; border: 0; color: #ffa365; text-decoration: underline; text-underline-offset: .2em; }
+.product-footer button[data-contact] { background: transparent; border: 0; padding: 0; color: var(--textDim); font-size: 14px; text-decoration: underline; text-underline-offset: .2em; }
+.contact-open { overflow: hidden; }
+#contact-dialog { position: fixed; width: min(600px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); margin: auto; padding: 2rem; border: 1px solid var(--stroke); border-radius: 18px; background: var(--surface1); color: var(--text); box-shadow: 0 24px 90px #0004; overflow-y: auto; }
+#contact-dialog::backdrop { background: #15120dcc; backdrop-filter: blur(4px); }
+#contact-dialog h2 { margin: 0 2rem .75rem 0; font-size: clamp(1.6rem, 4vw, 2rem); letter-spacing: -.7px; }
+#contact-description, #contact-success p { color: var(--textDim); font-size: 15px; line-height: 1.6; }
+.dialog-close { position: absolute; top: .6rem; right: .6rem; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--textDim); font-size: 28px; line-height: 1; }
+.dialog-close:hover { background: var(--surface2); }
+.contact-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+#contact-form label { display: block; font-size: 14px; font-weight: 600; line-height: 1.5; }
+#contact-form .optional { color: var(--textDim); font-weight: 400; }
+#contact-form input, #contact-form textarea { display: block; width: 100%; margin-top: .4rem; padding: .65rem .8rem; border: 1px solid var(--stroke); border-radius: 8px; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.5; }
+#contact-form textarea { resize: vertical; min-height: 110px; }
+.contact-message { margin-top: 1rem; }
+.contact-privacy { margin: 1rem 0; color: var(--textDim); font-size: 12px; line-height: 1.6; }
+.contact-submit { width: 100%; }
+#contact-status { font-size: 14px; line-height: 1.6; padding: .75rem; border-radius: 8px; background: var(--accentSoft); }
+.contact-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+#contact-dialog [hidden] { display: none; }
+#contact-dialog :disabled { cursor: wait; opacity: .65; }
+@media (max-width: 520px) {
+  #contact-dialog { padding: 1.4rem; }
+  .contact-fields { grid-template-columns: 1fr; gap: .8rem; }
+  header.site nav button[data-contact] { font-size: 12px; }
 }
