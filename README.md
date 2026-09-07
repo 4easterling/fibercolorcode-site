@@ -33,6 +33,10 @@ document's heading IDs when adding or renaming a section. Active document links 
 styles, horizontally scrollable tables, and a print layout. Policy wording and effective
 dates are independent of presentation changes.
 
+Stylesheet URLs include a content version to avoid reusing stale CSS after a deployment.
+When editing `style.css`, update the `?v=` value in all five HTML pages to the first 12
+characters of its SHA-256 hash (`shasum -a 256 style.css`).
+
 ## DNS setup
 
 Point `fibercolorcode.app` at GitHub Pages. At your registrar, create:
