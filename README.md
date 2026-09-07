@@ -105,10 +105,13 @@ Facts baked in that need updating if they change:
 
 `assets/screenshots/` contains 860 × 1800 PNG captures of the production Flutter
 `SpliceEditor`, its expanded results sheet, and `SignaturePadModal`. The sample
-project is Vault 12 / North route with a 192-fiber North distribution destination. Both use the count
-`97-108+12XD+121-180+108XD` (72 live fibers and 120 dead positions).
+project is Vault 12 / North route with a 288-fiber North distribution destination. Both use the count
+`97-168+24XD+193-264+24XD+289-336+48XD` (192 live fibers and 96 dead positions).
 These contain no customer records. Captures use the app's light theme, Material
 icons, and Roboto device font fallback (rather than Flutter test square glyphs).
 The homepage frames full captures and links cropped detail previews to their full
 images. Replace captures when the corresponding app UI changes; do not redraw
 screens as mockups or add fictional data as customer evidence.
+
+Screenshot links use content-hash query versions. Refresh each image’s version in
+`index.html` whenever its PNG changes, so returning visitors get the new capture.
