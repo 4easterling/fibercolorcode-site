@@ -110,7 +110,7 @@ project is Vault 12 / North route with a 288-fiber North distribution destinatio
 These contain no customer records. Captures use the app's light theme, Material
 icons, and Roboto device font fallback (rather than Flutter test square glyphs).
 The homepage frames full captures and opens screenshot links in an on-page image
-viewer. The viewer has a visible Close button, supports Escape and background clicks,
+viewer. The viewer has a discreet X close control, supports Escape and background clicks,
 and restores focus to the original screenshot. Without JavaScript, the links still open
 the image files. `image-viewer.js` uses the same content-hash versioning as `contact.js`.
 Replace captures when the corresponding app UI changes; do not redraw
