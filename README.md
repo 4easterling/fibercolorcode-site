@@ -43,6 +43,21 @@ Stylesheet URLs include a content version to avoid reusing stale CSS after a dep
 When editing `style.css`, update the `?v=` value in all five HTML pages to the first 12
 characters of its SHA-256 hash (`shasum -a 256 style.css`).
 
+## Browser icon
+
+All five HTML pages link to the orange cable logo in `/favicon.svg`, with a
+16/32/48-pixel `/favicon.ico` fallback. Keep the links root-relative so nested
+legal pages and missing URLs resolve the same assets. The ICO also supports
+browsers that request `/favicon.ico` automatically.
+
+When changing either icon, update its `?v=` in all five HTML pages to the first
+12 characters of that file's SHA-256 hash, as with the stylesheet. Regenerate
+the ICO after editing the SVG, for example with ImageMagick:
+
+```sh
+convert -background none -density 384 favicon.svg -define icon:auto-resize=48,32,16 favicon.ico
+```
+
 ## DNS setup
 
 Point `fibercolorcode.app` at GitHub Pages. At your registrar, create:
