@@ -24,6 +24,15 @@ Directories with `index.html` (rather than `privacy.html`) give extension-less U
 exactly what the app's URL constants already point at. **Do not rename these to flat `.html`
 files** — it would break the in-app links.
 
+## Presentation
+
+The three documents share a responsive layout with desktop section navigation and a native
+collapsible section index on smaller screens. Keep the section links aligned with each
+document's heading IDs when adding or renaming a section. Active document links use
+`aria-current="page"`. The shared stylesheet includes system dark mode, keyboard focus
+styles, horizontally scrollable tables, and a print layout. Policy wording and effective
+dates are independent of presentation changes.
+
 ## DNS setup
 
 Point `fibercolorcode.app` at GitHub Pages. At your registrar, create:
