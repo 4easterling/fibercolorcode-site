@@ -1,6 +1,6 @@
 # fibercolorcode.app
 
-Static legal + landing site for the **Fiber Color Code** app, served by GitHub Pages.
+Static product homepage + legal site for the **Fiber Color Code** app, served by GitHub Pages.
 
 No build step, no JavaScript, no external requests. Edit the HTML, push to `main`, done.
 
@@ -15,7 +15,7 @@ those internal documents. So the public surface lives here and here only.
 
 | Path | File | Referenced by |
 |------|------|---------------|
-| `/` | `index.html` | — |
+| `/` | `index.html` | Product homepage |
 | `/privacy` | `privacy/index.html` | `kPrivacyPolicyUrl` in `profile_view.dart` |
 | `/terms` | `terms/index.html` | `kTermsOfServiceUrl` in `profile_view.dart` |
 | `/delete-account` | `delete-account/index.html` | App Store / Play Store listings |
@@ -25,6 +25,12 @@ exactly what the app's URL constants already point at. **Do not rename these to 
 files** — it would break the in-app links.
 
 ## Presentation
+
+The homepage introduces the product with a hero, an explicitly illustrative splice plan,
+a workflow overview, crew use cases, and email calls to action. It uses the existing support
+address until a verified app download or signup destination is supplied. Customer quotes,
+logos, ratings, and usage statistics must come from real, approved sources; none are
+currently published. Keep the legal documents available in the homepage footer.
 
 The three documents share a responsive layout with desktop section navigation and a native
 collapsible section index on smaller screens. Keep the section links aligned with each
