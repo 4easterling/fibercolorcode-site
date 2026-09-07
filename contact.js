@@ -23,7 +23,10 @@
         requestId = '';
       }
       source = button.textContent.replace('↗', '').trim();
-      title.textContent = source === 'Contact support' ? 'How can we help?' : 'Get your crew connected.';
+      title.textContent = source === 'Contact support' ? 'How can we help?' : 'Let’s talk about your organization.';
+      description.textContent = source === 'Contact support'
+        ? 'Tell us what you need help with. We’ll get back to you by email.'
+        : 'Tell us about your company and what you need from the Organization plan. We’ll get back to you by email.';
       description.hidden = false;
       form.hidden = false;
       success.hidden = true;
