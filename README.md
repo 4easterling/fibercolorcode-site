@@ -27,7 +27,9 @@ files** — it would break the in-app links.
 ## Presentation
 
 The homepage introduces the product with a hero, actual app screenshots with sample project data,
-a workflow overview, crew use cases, and contact-dialog calls to action. Inquiries are emailed
+a workflow overview, crew use cases, and direct web-app links in the navigation, hero,
+and closing call to action. These open `https://web.fibercolorcode.app/` in the same tab;
+crew inquiries and footer support retain the contact dialog. Inquiries are emailed
 to the configured support inbox through the app’s existing Resend service. Customer quotes,
 logos, ratings, and usage statistics must come from real, approved sources; none are
 currently published. Keep the legal documents available in the homepage footer.
@@ -136,7 +138,7 @@ Screenshot links use content-hash query versions. Refresh each image’s version
 
 ## Contact form
 
-All five homepage contact CTAs open the native dialog in `index.html`. `contact.js`
+The crew inquiry and footer support buttons open the native dialog in `index.html`. `contact.js`
 submits name, email, optional company and phone, message, and CTA source to
 `https://us-central1-fiber-color-code-app.cloudfunctions.net/submitWebsiteContact`.
 The backend is maintained in the private app repository at `functions/src/website_contact.ts`;
