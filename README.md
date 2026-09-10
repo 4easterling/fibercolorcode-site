@@ -105,8 +105,8 @@ address that bounces is worse than naming no address at all.
 ## Before relying on these documents
 
 They were drafted against what the app actually does — the real data inventory, the real
-sub-processors, the real 30-day purge and 14-day backup retention. That is a better starting
-point than a generic template, but it is not legal advice. Have an attorney review before
+sub-processors, the real 30-day recovery window and retention of the most recent 14 organization
+exports. That is a better starting point than a generic template, but it is not legal advice. Have an attorney review before
 selling into a procurement process.
 
 Facts baked in that need updating if they change:

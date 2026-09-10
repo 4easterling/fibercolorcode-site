@@ -33,7 +33,7 @@
 
   <p class="eyebrow">Legal</p>
   <h1 id="document-title">Privacy Policy</h1>
-  <p class="updated">Effective 28 August 2026 &middot; Last updated 28 August 2026</p>
+  <p class="updated">Effective 28 August 2026 &middot; Last updated 10 September 2026</p>
 
   </header>
   <aside class="toc-desktop">
@@ -75,6 +75,13 @@
       </ul></nav>
     </details>
     <article aria-labelledby="document-title">
+  <!-- #Claude — Remove after support and privacy mailbox delivery is verified. -->
+  <div class="note">
+    <p><strong>Email contact is being set up.</strong> The support and privacy email
+    addresses on this site are not yet ready to receive requests. You can request account
+    deletion in the app under Profile &rarr; Delete Account; see
+    <a href="/delete-account/#option-1-delete-it-in-the-app">the in-app deletion steps</a>.</p>
+  </div>
   <p class="lede">Fiber Color Code is a field tool for fiber optic technicians. This policy
   describes exactly what the app collects, why, who it is shared with, and how long it is kept.
   It is written against what the software actually does, not from a template.</p>
@@ -129,11 +136,26 @@
   <ul>
     <li>Crash reports and diagnostics via Firebase Crashlytics on iOS and Android: stack traces,
     device model, and OS version. Crashlytics is not used on the web version.</li>
+    <!-- #Claude — Describe bounded web reports separately from native Crashlytics. -->
+    <li>When enabled, the web app sends limited reliability diagnostics to our Google Cloud
+    service: error category and class, a standardized error code, app version and build, and a
+    one-way error fingerprint. These reports exclude exception messages, stack traces,
+    account and workspace identifiers, and work contents.</li>
+    <li>Service request logs can include technical metadata such as IP addresses, request
+    times, and response status.</li>
     <li>Abuse-prevention signals via Firebase App Check. On the web this uses Google reCAPTCHA
     v3, which assesses whether a request comes from a real browser.</li>
     <li>Daily counters of invitations sent and photos uploaded per user, used only to enforce
     rate limits.</li>
   </ul>
+
+  <h3>Support requests</h3>
+  <p>When you contact us, we receive your contact details and the information you choose to
+  send. Support details you review, copy, and send from the app can include your account and
+  workspace identifiers, app version and build, pending and failed sync counts, standardized
+  error codes, and a diagnostic reference. Copying these details does not send them to us.</p>
+  <p>Do not include passwords, verification codes, full payment details, or customer photos
+  in a support request.</p>
 
   <h3>Stored on your device</h3>
   <p>The app keeps a local copy of your workspace so it works without signal: a SQLite database
@@ -184,7 +206,7 @@
       <tr><td>Produce as-built PDFs, CSV exports, and daily reports</td><td>Work content, signatures, photos, time entries</td></tr>
       <tr><td>Notify you when work is assigned</td><td>Push token, assignment records</td></tr>
       <tr><td>Bill for paid plans</td><td>Account, subscription status</td></tr>
-      <tr><td>Keep the service stable and prevent abuse</td><td>Crash diagnostics, App Check, rate-limit counters</td></tr>
+      <tr><td>Keep the service stable and prevent abuse</td><td>Crash and web diagnostics, service request metadata, App Check, rate-limit counters</td></tr>
     </tbody>
   </table></div>
 
@@ -197,13 +219,13 @@
   <div class="scroll" role="region" aria-label="Table, scrolls horizontally" tabindex="0"><table>
     <thead><tr><th scope="col">Provider</th><th scope="col">Purpose</th><th scope="col">What it receives</th></tr></thead>
     <tbody>
-      <tr><td>Google (Firebase)</td><td>Authentication, database, file storage, server functions, crash reporting, push notifications</td><td>Account, work content, photos, signatures, diagnostics</td></tr>
+      <tr><td>Google (Firebase and Google Cloud)</td><td>Authentication, database, file storage, server functions, crash reporting, push notifications</td><td>Account, work content, photos, signatures, diagnostics</td></tr>
       <tr><td>Google reCAPTCHA</td><td>Abuse prevention on the web</td><td>Browser and request signals, IP address</td></tr>
       <tr><td>Mapbox</td><td>Map tiles and imagery</td><td>IP address and the map area being viewed</td></tr>
       <tr><td>Stripe</td><td>Subscription payments on the web</td><td>Billing contact and payment details, entered directly with Stripe</td></tr>
       <tr><td>RevenueCat</td><td>Validating in-app purchases</td><td>Purchase receipts, account identifier</td></tr>
       <tr><td>Apple, Google Play</td><td>Processing mobile purchases</td><td>Payment details, under their own policies</td></tr>
-      <tr><td>Resend</td><td>Sending invitation and notification emails</td><td>Recipient email address and message contents</td></tr>
+      <tr><td>Resend</td><td>Sending invitations, notifications, and website inquiries</td><td>Recipient email address and message contents</td></tr>
     </tbody>
   </table></div>
 
@@ -220,9 +242,21 @@
     profiles) are soft-deleted first and recoverable for <strong>30 days</strong>, then
     permanently erased by an automated daily job, including associated photos and signature
     files.</li>
-    <li><strong>Backups.</strong> Organizations receive a nightly backup and we keep the most
-    recent 14. Deleted content can therefore persist in a backup for up to 14 days after
-    deletion, even once removed from the live database.</li>
+    <!-- #Claude — Retention is a count of successful exports, not a maximum age. -->
+    <li><strong>Backups.</strong> Organization backups are scheduled nightly. After a successful
+    export, we prune older copies to retain the most recent 14. This is a limit on the number
+    of copies, not a guarantee that every copy is less than 14 days old. Deleted content can
+    remain in an older backup until it is pruned; failed exports or cleanup can extend that
+    period. Copies your organization downloads or exports are managed separately by your
+    organization.</li>
+    <li><strong>Infrastructure recovery copies.</strong> Separate daily database backups
+    have a 14-day retention period. Database point-in-time recovery and file-storage soft
+    delete can retain earlier data for up to seven days. These recovery copies are separate
+    from the organization exports above, so removal from live storage does not immediately
+    remove every recovery copy.</li>
+    <li><strong>Web diagnostic reports and standard service request logs</strong> are retained
+    for 30 days. Security audit logs follow Google's separate Cloud Audit Logs retention
+    requirements.</li>
     <li><strong>Crash diagnostics</strong> are retained under Google's Crashlytics retention
     schedule.</li>
   </ul>

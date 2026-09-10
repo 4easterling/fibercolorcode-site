@@ -33,7 +33,7 @@
 
   <p class="eyebrow">Account</p>
   <h1 id="document-title">Delete your account</h1>
-  <p class="updated">Applies to the Fiber Color Code app by Fiber Education &middot; Updated 28 August 2026</p>
+  <p class="updated">Applies to the Fiber Color Code app by Fiber Education &middot; Updated 10 September 2026</p>
 
   </header>
   <aside class="toc-desktop">
@@ -65,6 +65,13 @@
       </ul></nav>
     </details>
     <article aria-labelledby="document-title">
+  <!-- #Claude — Remove after support and privacy mailbox delivery is verified. -->
+  <div class="note">
+    <p><strong>Email contact is being set up.</strong> The support and privacy email
+    addresses on this site are not yet ready to receive requests. You can request account
+    deletion in the app under Profile &rarr; Delete Account; see
+    <a href="/delete-account/#option-1-delete-it-in-the-app">the in-app deletion steps</a>.</p>
+  </div>
   <p class="lede">You can delete your Fiber Color Code account and its data at any time, either
   from inside the app or by emailing us. This page explains how, what gets erased, and what is
   kept and for how long.</p>
@@ -120,9 +127,15 @@
   </div>
   <div class="card">
     <h3>Backups</h3>
-    <p>Organizations receive a nightly backup and the most recent 14 are retained. Deleted content
-    can therefore remain in a backup for up to <strong>14 days</strong> after it leaves the live
-    database.</p>
+    <!-- #Claude — Match the actual export-count retention policy. -->
+    <p>Organization backups are scheduled nightly. After a successful export, we prune older
+    copies to retain the most recent 14. This limits the number of copies, not their maximum
+    age. Deleted content can remain in an older backup until it is pruned; failed exports or
+    cleanup can extend that period beyond 14 days. Copies your organization downloads or
+    exports are managed separately by your organization.</p>
+    <p>Separate daily database backups are retained for 14 days. Database point-in-time
+    recovery and file-storage soft delete can retain earlier data for up to seven days.
+    Removal from live storage does not immediately remove these recovery copies.</p>
   </div>
   <div class="card">
     <h3>Records we must keep</h3>
@@ -143,7 +156,9 @@
   </ul>
 
   <h2 id="export-your-data-first" tabindex="-1">Export your data first</h2>
-  <p>Deletion is permanent, so take a copy before you start. In the app, go to
+  <p>Sync pending work before deleting your account: deletion clears this device's offline
+  copies, including work that has not reached the server. Export any data you need before
+  requesting deletion. After the 30-day recovery window, deletion is permanent. In the app, go to
   <strong>Profile &rarr; Export My Data</strong> for a JSON file containing your profile and every
   workspace's plans and templates. Individual splice plans can also be exported as PDF or CSV, and
   work orders as an as-built PDF.</p>
