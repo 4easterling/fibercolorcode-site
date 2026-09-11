@@ -27,7 +27,7 @@ files** — it would break the in-app links.
 ## Presentation
 
 The homepage introduces the product with a hero, actual app screenshots with sample project data,
-a workflow overview, crew use cases, native FAQ disclosures, and direct web-app links in the navigation, hero,
+a workflow overview, crew use cases, and direct web-app links in the navigation, hero,
 and closing call to action. These open `https://web.fibercolorcode.app/` in the same tab;
 crew inquiries and footer support retain the contact dialog. Inquiries are emailed
 to the configured support inbox through the app’s existing Resend service. Customer quotes,
@@ -126,7 +126,7 @@ project is Vault 12 / North route with a 288-fiber North distribution destinatio
 `97-168+24XD+193-264+24XD+289-336+48XD` (192 live fibers and 96 dead positions).
 These contain no customer records. Captures use the app's light theme, Material
 icons, and Roboto device font fallback (rather than Flutter test square glyphs).
-The homepage labels and frames full captures side by side and opens screenshot links in an on-page image
+The homepage frames full captures and opens screenshot links in an on-page image
 viewer. The viewer has a discreet X close control, supports Escape and background clicks,
 and restores focus to the original screenshot. Without JavaScript, the links still open
 the image files. `image-viewer.js` uses the same content-hash versioning as `contact.js`.
