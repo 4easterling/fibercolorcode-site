@@ -8,7 +8,8 @@
 <link rel="icon" href="/favicon.svg?v=b155efc8fcce" type="image/svg+xml" sizes="any">
 <title>Terms of Service — Fiber Color Code</title>
 <meta name="description" content="The terms governing use of the Fiber Color Code app.">
-<link rel="stylesheet" href="/style.css?v=4560c8ddd776">
+<script src="/theme.js?v=9949fc808c79"></script>
+<link rel="stylesheet" href="/style.css?v=eed533dd60e6">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -25,6 +26,11 @@
     <a href="/terms/" aria-current="page">Terms</a>
     <a href="/delete-account/">Delete account</a>
   </nav>
+  <label class="theme-toggle" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg>
+    <input type="checkbox" role="switch" aria-label="Dark mode" data-theme-toggle>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg>
+  </label>
 </div></header>
 
 <main class="wrap document" id="main" tabindex="-1">
@@ -33,7 +39,7 @@
 
   <p class="eyebrow">Legal</p>
   <h1 id="document-title">Terms of Service</h1>
-  <p class="updated">Effective 28 August 2026 &middot; Last updated 10 September 2026</p>
+  <p class="updated">Effective 28 August 2026 &middot; Last updated 11 September 2026</p>
 
   </header>
   <aside class="toc-desktop">
@@ -131,6 +137,10 @@
   host, process, back up, and display that content in order to operate the Service for you. We
   claim no other rights. We do not use your content for advertising or to train machine learning
   models.</p>
+  <p>An approved revision records the plan and supporting media reviewed at the time of
+  approval, together with signer and approval details. Later edits do not update that record;
+  changed work needs a new approval. A pending or offline signature is not a server-confirmed
+  approved revision. Approval records do not independently verify the accuracy of field work.</p>
   <p>You are responsible for having the right to upload what you upload, including photographs
   taken on a customer's premises.</p>
 
@@ -171,9 +181,14 @@
   <p>We aim to keep the Service running but do not promise uninterrupted availability. The app is
   designed to work offline and sync when you reconnect, but you should not rely on it as your only
   copy of critical records. Export important as-builts.</p>
+  <p>In app versions with draft recovery, recovery copies remain on the device until you save
+  them as plans. Syncing does not save an unsaved recovery draft. Save the drafts you need
+  before signing out, clearing local data, or moving to another installation.</p>
 
   <h2 id="termination" tabindex="-1">8. Termination</h2>
-  <p>Before requesting account deletion, sync pending work and export records you need.
+  <p>Before requesting account deletion, save any recovery drafts as plans, sync pending work,
+  and export records you need, including approved as-built PDFs separately from the account
+  JSON export.
   Deletion clears offline copies on that device. Shared organization records can remain
   with the organization; the <a href="/delete-account/">deletion page</a> explains the
   recovery window and retention.</p>

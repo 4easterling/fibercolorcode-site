@@ -57,10 +57,19 @@ header.site .wrap { padding-top: 1.25rem; padding-bottom: 1.25rem; display: flex
 .brand .words { display: flex; flex-direction: column; gap: 5px; }
 .brand .name { font-size: 16px; line-height: 1.2; font-weight: 750; letter-spacing: -.3px; color: var(--text); }
 .brand .tag { font-size: 12px; letter-spacing: 1.3px; line-height: 1.2; color: var(--textDim); }
-header.site nav { display: flex; gap: .35rem; flex-wrap: wrap; }
+header.site nav { margin-left: auto; display: flex; gap: .35rem; flex-wrap: wrap; }
 header.site nav a { padding: .6rem .9rem; font-size: 14px; font-weight: 600; color: var(--textDim); text-decoration: none; border-radius: 8px; }
 header.site nav a:hover { background: var(--surface2); color: var(--text); }
 header.site nav a[aria-current="page"] { background: var(--accentSoft); color: var(--accentText); }
+.theme-toggle { flex-shrink: 0; display: flex; align-items: center; gap: .4rem; min-height: 44px; color: var(--textDim); cursor: pointer; }
+.theme-toggle[hidden] { display: none; }
+.theme-toggle svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle input { appearance: none; position: relative; width: 34px; height: 20px; margin: 0; border: 1px solid var(--textDim); border-radius: 20px; background: var(--surface2); cursor: pointer; }
+.theme-toggle input::before { content: ""; position: absolute; width: 12px; height: 12px; top: 3px; left: 3px; border-radius: 50%; background: var(--textDim); }
+.theme-toggle input:checked::before { transform: translateX(14px); }
+@media (prefers-reduced-motion: no-preference) {
+  .theme-toggle input::before { transition: transform 150ms ease; }
+}
 h1, h2, h3 { line-height: 1.25; text-wrap: balance; }
 h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); margin: 0 0 1rem; letter-spacing: -1.6px; font-weight: 750; }
 h2 { font-size: 1.35rem; margin: 2.75rem 0 1rem; letter-spacing: -.45px; }
@@ -138,7 +147,8 @@ main:focus { outline: none; }
 @media (max-width: 900px) {
   .wrap { padding: 2rem 1.25rem 3rem; }
   header.site .wrap { flex-wrap: wrap; gap: 1rem; padding-top: 1rem; padding-bottom: .75rem; }
-  header.site nav { width: 100%; gap: .25rem; }
+  .theme-toggle { margin-left: auto; }
+  header.site nav { order: 3; width: 100%; gap: .25rem; }
   header.site nav a { flex: 1 1 auto; white-space: nowrap; text-align: center; padding: .65rem .4rem; }
   .document { display: block; }
   .document-header { padding-bottom: 1.75rem; margin-bottom: 1.5rem; }
@@ -162,7 +172,7 @@ main:focus { outline: none; }
   table { min-width: 32rem; }
 }
 @media print {
-  :root { color-scheme: light; --bg: #fff; --surface1: #fff; --surface2: #f5f5f5; --text: #000; --textDim: #333; --stroke: #ccc; --accentText: #000; --accentSoft: #f5f5f5; }
+  :root, :root[data-theme] { color-scheme: light; --bg: #fff; --surface1: #fff; --surface2: #f5f5f5; --text: #000; --textDim: #333; --stroke: #ccc; --accentText: #000; --accentSoft: #f5f5f5; }
   header.site, footer.site, .skip, .toc-desktop, .toc-mobile, .back-link, .back-top { display: none; }
   body { font-size: 11pt; line-height: 1.55; }
   .wrap { max-width: none; padding: 0; }
@@ -225,7 +235,7 @@ main:focus { outline: none; }
 .closing-card .button { flex-shrink: 0; }
 .product-footer .wrap { display: flex; justify-content: space-between; gap: 2rem; }
 .product-footer p { margin: .5rem 0; font-size: 13px; }.product-footer small { font-size: 12px; }
-.product-footer nav { display: grid; grid-template-columns: auto auto; column-gap: 2rem; align-content: start; }.product-footer nav a { font-size: 13px; padding: .25rem 0; }
+.product-footer nav { display: grid; grid-template-columns: auto auto; column-gap: 2rem; align-content: start; }.product-footer nav a { font-size: 13px; padding: .6rem 0; min-height: 44px; }
 @media (max-width: 1050px) {
   .product-hero { gap: 2rem; }.hero-copy h1 { font-size: 3.1rem; }
   .hero-actions { flex-direction: column; align-items: start; }
@@ -244,7 +254,10 @@ main:focus { outline: none; }
   .crew-layout { gap: 2.5rem; }.closing-card { padding: 2rem; }
 }
 @media (max-width: 600px) {
-  .product-page header.site nav { gap: .25rem; }.product-page header.site nav a { font-size: 12px; padding: .65rem .25rem; }.product-page header.site .nav-cta { padding-inline: .75rem; }
+  .product-page header.site nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+  .product-page header.site nav a { font-size: 14px; min-height: 44px; padding: .6rem .25rem; }
+  .product-page header.site .nav-cta { grid-column: 1 / -1; margin: 0; }
+  .hero-actions, .hero-actions .button { width: 100%; }
   .hero-copy h1 { letter-spacing: -1.7px; }.hero-description { font-size: 17px; }
   .hero-actions { gap: .65rem; }.button { font-size: 14px; padding: .85rem 1rem; gap: .8rem; }
   .preview-content { padding: 1rem; }.preview-heading h2 { font-size: 16px; }.preview-heading .micro-label { font-size: 9px; }
@@ -265,16 +278,14 @@ main:focus { outline: none; }
 .app-showcase { margin: 0; min-width: 0; }
 .app-screens { position: relative; aspect-ratio: .72; max-width: 28rem; margin-inline: auto; }
 .app-screen { display: block; position: absolute; width: 61%; border: 5px solid #2c2820; border-radius: 18px; overflow: hidden; background: #fbfaf6; box-shadow: 0 15px 35px #2c28201f; }
+/* Keep the rear screenshot visible when reached with the keyboard. */
+.app-screen:focus-visible { z-index: 3; }
 .app-screen img { display: block; width: 100%; height: auto; }
 .screen-editor { right: 0; top: 5%; z-index: 2; }
 .screen-results { left: 0; top: 0; width: 55%; }
 .app-showcase figcaption { margin-top: 1rem; text-align: center; font-size: 12px; line-height: 1.6; color: var(--textDim); }
-.screenshot-detail { display: block; position: relative; height: 230px; margin: 1rem 0 1.4rem; overflow: hidden; border: 1px solid var(--stroke); border-radius: 10px; background: #fbfaf6; }
-.screenshot-detail img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.editor-detail img { object-position: center 48%; }
-.results-detail img { object-position: center 72%; }
-.signature-detail img { object-position: center 80%; }
-.screenshot-detail > span { position: absolute; bottom: .7rem; right: .7rem; padding: .35rem .6rem; font-size: 12px; font-weight: 600; background: var(--surface1); color: var(--accentText); border: 1px solid var(--stroke); border-radius: 5px; }
+.screenshot-detail { display: block; margin: 1rem 0 1.4rem; overflow: hidden; border: 1px solid var(--stroke); border-radius: 10px; background: #fbfaf6; }
+.screenshot-detail img { display: block; width: 100%; height: auto; }
 .screenshot-detail:hover { border-color: var(--accentText); }
 @media (max-width: 900px) {
   .app-showcase { width: 100%; max-width: 33rem; justify-self: center; }
@@ -284,7 +295,6 @@ main:focus { outline: none; }
   .app-screens { aspect-ratio: .72; }
   .app-screen { border-radius: 12px; border-width: 3px; }
   .app-showcase figcaption { max-width: 20rem; margin-inline: auto; }
-  .screenshot-detail { height: 240px; }
 }
 @media print {
   .app-showcase { max-width: 25rem; }
@@ -308,7 +318,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, #contact-stat
 
 header.site nav button[data-contact] { border: 0; border-radius: 8px; font-size: 14px; font-weight: 600; }
 button.text-link { background: transparent; border: 0; color: #ffa365; text-decoration: underline; text-underline-offset: .2em; }
-.product-footer button[data-contact] { background: transparent; border: 0; padding: 0; color: var(--textDim); font-size: 14px; text-decoration: underline; text-underline-offset: .2em; }
+.product-footer button[data-contact] { background: transparent; border: 0; padding: .6rem 0; min-height: 44px; text-align: left; color: var(--textDim); font-size: 14px; text-decoration: underline; text-underline-offset: .2em; }
 .contact-open { overflow: hidden; }
 #contact-dialog { position: fixed; width: min(600px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); margin: auto; padding: 2rem; border: 1px solid var(--stroke); border-radius: 18px; background: var(--surface1); color: var(--text); box-shadow: 0 24px 90px #0004; overflow-y: auto; }
 #contact-dialog::backdrop { background: #15120dcc; backdrop-filter: blur(4px); }

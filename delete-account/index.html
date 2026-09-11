@@ -8,7 +8,8 @@
 <link rel="icon" href="/favicon.svg?v=b155efc8fcce" type="image/svg+xml" sizes="any">
 <title>Delete Your Account — Fiber Color Code</title>
 <meta name="description" content="How to delete your Fiber Color Code account and what happens to your data.">
-<link rel="stylesheet" href="/style.css?v=4560c8ddd776">
+<script src="/theme.js?v=9949fc808c79"></script>
+<link rel="stylesheet" href="/style.css?v=eed533dd60e6">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -25,6 +26,11 @@
     <a href="/terms/">Terms</a>
     <a href="/delete-account/" aria-current="page">Delete account</a>
   </nav>
+  <label class="theme-toggle" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg>
+    <input type="checkbox" role="switch" aria-label="Dark mode" data-theme-toggle>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg>
+  </label>
 </div></header>
 
 <main class="wrap document" id="main" tabindex="-1">
@@ -33,7 +39,7 @@
 
   <p class="eyebrow">Account</p>
   <h1 id="document-title">Delete your account</h1>
-  <p class="updated">Applies to the Fiber Color Code app by Fiber Education &middot; Updated 10 September 2026</p>
+  <p class="updated">Applies to the Fiber Color Code app by Fiber Education &middot; Updated 11 September 2026</p>
 
   </header>
   <aside class="toc-desktop">
@@ -72,14 +78,14 @@
     deletion in the app under Profile &rarr; Delete Account; see
     <a href="/delete-account/#option-1-delete-it-in-the-app">the in-app deletion steps</a>.</p>
   </div>
-  <p class="lede">You can delete your Fiber Color Code account and its data at any time, either
-  from inside the app or by emailing us. This page explains how, what gets erased, and what is
-  kept and for how long.</p>
+  <p class="lede">You can request deletion of your Fiber Color Code account inside the app.
+  Email requests will be available once the privacy mailbox is ready. This page explains
+  what gets erased, what is kept, and for how long.</p>
 
   <h2 id="option-1-delete-it-in-the-app" tabindex="-1">Option 1 &mdash; Delete it in the app</h2>
   <ol>
     <li>Open Fiber Color Code and sign in.</li>
-    <li>Open the navigation drawer and tap your profile.</li>
+    <li>Open the menu beside the page title and tap your profile.</li>
     <li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
     <li>Confirm. For your security you will be asked to sign in again &mdash; enter your password,
     or re-authenticate with Google if that is how you sign in.</li>
@@ -94,7 +100,8 @@
   </div>
 
   <h2 id="option-2-ask-us-to-delete-it" tabindex="-1">Option 2 &mdash; Ask us to delete it</h2>
-  <p>If you cannot sign in, email
+  <p><strong>Not yet available:</strong> the privacy mailbox is still being set up. Once it
+  is ready, if you cannot sign in, email
   <a href="mailto:privacy@fibercolorcode.app">privacy@fibercolorcode.app</a> from the address on
   the account, with the subject <strong>"Delete my account"</strong>.</p>
   <p>We will verify the request and confirm when it is done, normally within 30 days. We may need
@@ -108,8 +115,9 @@
       <li>Your sign-in credentials and the ability to sign in.</li>
       <li>Files stored under your account, including your profile picture.</li>
       <li>Your push notification token.</li>
-      <li>Personal workspaces you own, and any workspace where you are the only member &mdash;
-      including the splice plans, templates, and photos inside them.</li>
+      <li>Personal workspaces you own, and other workspaces you own where you are the only
+      member &mdash; including splice plans, templates, photos, signatures, and approved
+      revision history inside them.</li>
       <li>Your membership in every team and organization.</li>
     </ul>
   </div>
@@ -118,12 +126,14 @@
   <div class="card">
     <h3>Work belonging to your employer</h3>
     <p>If you were a member of an organization or team owned by someone else, the work records
-    created there &mdash; splice plans, photos, signed as-builts, work orders, and time entries
+    created there &mdash; splice plans, field notes where supported, photos, signed as-builts,
+    approved revision history, work orders, and time entries
     &mdash; belong to that organization and are <strong>not</strong> deleted when you delete your
     account. They are that business's records.</p>
-    <p>Activity log entries and signed documents may continue to show the email address that
-    performed an action, because an as-built loses its value as a record if you cannot tell who
-    signed it. If you need those records changed, contact the organization's administrator.</p>
+    <p>Activity logs and approved records can retain the acting or signing account's
+    identifier, name, email address, and timestamps, along with the reviewed content, photos,
+    and signature. Contact the organization's administrator about these records; approved
+    revisions cannot be rewritten through the app.</p>
   </div>
   <div class="card">
     <h3>Backups</h3>
@@ -156,12 +166,19 @@
   </ul>
 
   <h2 id="export-your-data-first" tabindex="-1">Export your data first</h2>
-  <p>Sync pending work before deleting your account: deletion clears this device's offline
-  copies, including work that has not reached the server. Export any data you need before
-  requesting deletion. After the 30-day recovery window, deletion is permanent. In the app, go to
-  <strong>Profile &rarr; Export My Data</strong> for a JSON file containing your profile and every
-  workspace's plans and templates. Individual splice plans can also be exported as PDF or CSV, and
-  work orders as an as-built PDF.</p>
+  <p>In versions with draft recovery, first save any recovery drafts you need as plans.
+  <strong>Syncing alone does not save recovery drafts.</strong> Then sync pending work before
+  deleting your account: deletion clears this installation's offline copies, including work
+  that has not reached the server.</p>
+  <p>Export records you need before requesting deletion.
+  <strong>Profile &rarr; Export My Data</strong> produces a JSON file containing your profile
+  and the plans and templates in your accessible workspaces. It does not include image files,
+  the separate approved revision history, or unsaved recovery drafts. Export approved as-built
+  PDFs separately and keep any original photos or signatures you need. Individual splice plans
+  also export as PDF or CSV, and work orders as an as-built PDF.</p>
+  <p>Downloaded exports and copies on other devices or separate app installations are not
+  erased by clearing this device's local data. Manage those copies separately. After the
+  30-day recovery window, server deletion is permanent.</p>
 
   <h2 id="questions" tabindex="-1">Questions</h2>
   <p>Deletion and privacy:
