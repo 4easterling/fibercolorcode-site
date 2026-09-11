@@ -38,7 +38,11 @@ The three documents share a responsive layout with desktop section navigation an
 collapsible section index on smaller screens. Keep the section links aligned with each
 document's heading IDs when adding or renaming a section. Active document links use
 `aria-current="page"`. The shared stylesheet includes system dark mode, keyboard focus
-styles, horizontally scrollable tables, and a print layout. Policy wording and effective
+styles, horizontally scrollable tables, and a print layout. A header toggle switches
+between light and dark appearance and remembers the choice across pages and visits.
+Until a visitor chooses, the site follows their system preference. `theme.js` runs
+before styles load to apply a saved choice without flashing the wrong theme; if
+storage is unavailable, switching still works for the current page. Policy wording and effective
 dates are independent of presentation changes.
 
 Stylesheet URLs include a content version to avoid reusing stale CSS after a deployment.
@@ -154,3 +158,6 @@ and counters, not inquiry bodies. Success means the email provider accepted the 
 
 When editing `contact.js`, update its `?v=` in `index.html` to the first 12 characters
 of the file’s SHA-256 hash, as with the stylesheet.
+
+Theme behavior check: `node theme.test.cjs`. When editing `theme.js`, refresh its
+SHA-256 query version in all five HTML pages, as with the stylesheet.
