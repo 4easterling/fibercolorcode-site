@@ -8,8 +8,8 @@
 <link rel="icon" href="/favicon.svg?v=b155efc8fcce" type="image/svg+xml" sizes="any">
 <title>Fiber Color Code — Splice plans to signed as-builts</title>
 <meta name="description" content="Build color-coded splice plans, coordinate your crew, and export signed as-builts with Fiber Color Code.">
-<script src="/theme.js?v=93d8e7104932"></script>
-<link rel="stylesheet" href="/style.css?v=bb9ec3a3b790">
+<script src="/theme.js?v=9949fc808c79"></script>
+<link rel="stylesheet" href="/style.css?v=eed533dd60e6">
 <script src="/contact.js?v=d5b825970e53" defer></script>
 <script src="/image-viewer.js?v=59cd17def56f" defer></script>
 </head>
@@ -29,7 +29,11 @@
     <a href="/privacy/">Privacy</a>
     <a class="nav-cta" href="https://web.fibercolorcode.app/">Open Web App <span aria-hidden="true">↗</span></a>
   </nav>
-  <button class="theme-toggle" type="button" data-theme-toggle hidden>Change theme</button>
+  <label class="theme-toggle" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg>
+    <input type="checkbox" role="switch" aria-label="Dark mode" data-theme-toggle>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"/></svg>
+  </label>
 </div></header>
 
 <main id="main" tabindex="-1">
@@ -46,8 +50,8 @@
     </div>
     <figure class="app-showcase">
       <div class="app-screens">
-        <a class="app-screen screen-editor" href="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" aria-label="View full screenshot of the plan editor"><img src="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" width="860" height="1800" alt="Fiber Color Code plan editor showing Vault 12, a 288-fiber feeder cable with count 97-168+24XD+193-264+24XD+289-336+48XD, and the North distribution destination." decoding="async"></a>
-        <a class="app-screen screen-results" href="/assets/screenshots/splice-results.png?v=2e73257bfc4d" aria-label="View full screenshot of the splice results"><img src="/assets/screenshots/splice-results.png?v=2e73257bfc4d" width="860" height="1800" alt="The app’s master splice plan with color-coded tube and fiber assignments, 288 fiber positions, and PDF export." fetchpriority="high" decoding="async"></a>
+        <a class="app-screen screen-editor" href="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" data-light-image="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" data-dark-image="/assets/screenshots/plan-editor-dark.png?v=e7e18ad6f2c4" aria-label="View full screenshot of the plan editor"><img src="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" width="860" height="1800" alt="Fiber Color Code plan editor showing Vault 12, a 288-fiber feeder cable with count 97-168+24XD+193-264+24XD+289-336+48XD, and the North distribution destination." decoding="async"></a>
+        <a class="app-screen screen-results" href="/assets/screenshots/splice-results.png?v=2e73257bfc4d" data-light-image="/assets/screenshots/splice-results.png?v=2e73257bfc4d" data-dark-image="/assets/screenshots/splice-results-dark.png?v=d4dca210e602" aria-label="View full screenshot of the splice results"><img src="/assets/screenshots/splice-results.png?v=2e73257bfc4d" width="860" height="1800" alt="The app’s master splice plan with color-coded tube and fiber assignments, 288 fiber positions, and PDF export." fetchpriority="high" decoding="async"></a>
       </div>
       <figcaption>Inside Fiber Color Code · Sample project shown. Tap a screen to view it full size.</figcaption>
     </figure>
@@ -60,9 +64,9 @@
   <section class="workflow-section wrap" id="workflow" aria-labelledby="workflow-title">
     <div class="section-heading"><div><p class="eyebrow">A clearer way to work</p><h2 id="workflow-title">Plan it. Work it.<br>Put your name on it.</h2></div><p>The splice plan is just the start. Keep the job’s details together through the work and into the handover.</p></div>
     <div class="workflow-grid">
-      <article class="workflow-step"><span class="step-number">01 / PLAN</span><a class="screenshot-detail" href="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4"><img src="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" width="860" height="1800" alt="The actual plan editor with feeder cable and destination settings." loading="lazy" decoding="async"></a><h3>Start with the cable.</h3><p>Enter your CO cable and destinations to build a color-coded splice plan. Use templates when the next job follows a familiar pattern.</p></article>
-      <article class="workflow-step"><span class="step-number">02 / COORDINATE</span><a class="screenshot-detail" href="/assets/screenshots/splice-results.png?v=2e73257bfc4d"><img src="/assets/screenshots/splice-results.png?v=2e73257bfc4d" width="860" height="1800" alt="The actual color-coded master splice plan and its PDF export action." loading="lazy" decoding="async"></a><h3>Keep the crew connected.</h3><p>Organize plans in shared workspaces, assign work orders, and record job details. Work with locally saved records and sync when you reconnect.</p></article>
-      <article class="workflow-step"><span class="step-number">03 / HAND OVER</span><a class="screenshot-detail" href="/assets/screenshots/technician-signature.png?v=12bd86e77040"><img src="/assets/screenshots/technician-signature.png?v=12bd86e77040" width="860" height="1800" alt="The actual technician signature screen with the drawing area and Save Signature button." loading="lazy" decoding="async"></a><h3>Finish with a record.</h3><p>Attach photos, capture a signature, and export the work. Give your customer an as-built they can keep and your crew a record they can return to.</p></article>
+      <article class="workflow-step"><span class="step-number">01 / PLAN</span><a class="screenshot-detail" href="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" data-light-image="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" data-dark-image="/assets/screenshots/plan-editor-dark.png?v=e7e18ad6f2c4"><img src="/assets/screenshots/plan-editor.png?v=f2ea2e2672f4" width="860" height="1800" alt="The actual plan editor with feeder cable and destination settings." loading="lazy" decoding="async"></a><h3>Start with the cable.</h3><p>Enter your CO cable and destinations to build a color-coded splice plan. Use templates when the next job follows a familiar pattern.</p></article>
+      <article class="workflow-step"><span class="step-number">02 / COORDINATE</span><a class="screenshot-detail" href="/assets/screenshots/splice-results.png?v=2e73257bfc4d" data-light-image="/assets/screenshots/splice-results.png?v=2e73257bfc4d" data-dark-image="/assets/screenshots/splice-results-dark.png?v=d4dca210e602"><img src="/assets/screenshots/splice-results.png?v=2e73257bfc4d" width="860" height="1800" alt="The actual color-coded master splice plan and its PDF export action." loading="lazy" decoding="async"></a><h3>Keep the crew connected.</h3><p>Organize plans in shared workspaces, assign work orders, and record job details. Work with locally saved records and sync when you reconnect.</p></article>
+      <article class="workflow-step"><span class="step-number">03 / HAND OVER</span><a class="screenshot-detail" href="/assets/screenshots/technician-signature.png?v=62d51d5442ff" data-light-image="/assets/screenshots/technician-signature.png?v=62d51d5442ff" data-dark-image="/assets/screenshots/technician-signature-dark.png?v=43ca50e4ab74"><img src="/assets/screenshots/technician-signature.png?v=62d51d5442ff" width="860" height="1800" alt="The actual technician signature screen with the drawing area and Save Signature button." loading="lazy" decoding="async"></a><h3>Finish with a record.</h3><p>Attach photos, capture a signature, and export the work. Give your customer an as-built they can keep and your crew a record they can return to.</p></article>
     </div>
   </section>
 

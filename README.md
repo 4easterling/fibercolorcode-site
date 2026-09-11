@@ -38,7 +38,7 @@ The three documents share a responsive layout with desktop section navigation an
 collapsible section index on smaller screens. Keep the section links aligned with each
 document's heading IDs when adding or renaming a section. Active document links use
 `aria-current="page"`. The shared stylesheet includes system dark mode, keyboard focus
-styles, horizontally scrollable tables, and a print layout. A header toggle switches
+styles, horizontally scrollable tables, and a print layout. A compact sun/moon switch in the header switches
 between light and dark appearance and remembers the choice across pages and visits.
 Until a visitor chooses, the site follows their system preference. `theme.js` runs
 before styles load to apply a saved choice without flashing the wrong theme; if
@@ -128,12 +128,15 @@ Facts baked in that need updating if they change:
 `SpliceEditor`, its expanded results sheet, and `SignaturePadModal`. The sample
 project is Vault 12 / North route with a 288-fiber North distribution destination. Both use the count
 `97-168+24XD+193-264+24XD+289-336+48XD` (192 live fibers and 96 dead positions).
-These contain no customer records. Captures use the app's light theme, Material
+These contain no customer records. Captures use the app's light and dark themes, Material
 icons, and Roboto device font fallback (rather than Flutter test square glyphs).
 The homepage frames full captures and opens screenshot links in an on-page image
 viewer. The viewer has a discreet X close control, supports Escape and background clicks,
 and restores focus to the original screenshot. Without JavaScript, the links still open
 the image files. `image-viewer.js` uses the same content-hash versioning as `contact.js`.
+The site uses dark app captures in light mode and light captures in dark mode,
+including the full-size image viewer. The signature captures show the current
+reviewed-plan approval modal with sample data; no signature is submitted.
 Replace captures when the corresponding app UI changes; do not redraw
 screens as mockups or add fictional data as customer evidence.
 

@@ -9,21 +9,26 @@
   } catch {}
 
   document.addEventListener('DOMContentLoaded', () => {
-    const button = document.querySelector('[data-theme-toggle]');
-    const isDark = () => root.dataset.theme === 'dark' ||
-      (!root.dataset.theme && system.matches);
-    function updateButton() {
-      const next = isDark() ? 'light' : 'dark';
-      button.textContent = next === 'light' ? 'Light mode' : 'Dark mode';
-      button.setAttribute('aria-label', `Switch to ${next} mode`);
+    const toggle = document.querySelector('[data-theme-toggle]');
+    function updateTheme() {
+      const dark = root.dataset.theme === 'dark' ||
+        (!root.dataset.theme && system.matches);
+      toggle.checked = dark;
+      toggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+      // Contrast the real app captures against the site's selected theme.
+      document.querySelectorAll('[data-dark-image]').forEach(link => {
+        const src = dark ? link.dataset.lightImage : link.dataset.darkImage;
+        link.href = src;
+        link.querySelector('img').src = src;
+      });
     }
-    button.addEventListener('click', () => {
-      root.dataset.theme = isDark() ? 'light' : 'dark';
+    toggle.addEventListener('change', () => {
+      root.dataset.theme = toggle.checked ? 'dark' : 'light';
       try { localStorage.setItem(key, root.dataset.theme); } catch {}
-      updateButton();
+      updateTheme();
     });
-    system.addEventListener('change', updateButton);
-    updateButton();
-    button.hidden = false;
+    system.addEventListener('change', updateTheme);
+    updateTheme();
+    toggle.closest('label').hidden = false;
   });
 })();
