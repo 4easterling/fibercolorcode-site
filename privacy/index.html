@@ -39,7 +39,7 @@
 
   <p class="eyebrow">Legal</p>
   <h1 id="document-title">Privacy Policy</h1>
-  <p class="updated">Effective 28 August 2026 &middot; Last updated 10 September 2026</p>
+  <p class="updated">Effective 28 August 2026 &middot; Last updated 11 September 2026</p>
 
   </header>
   <aside class="toc-desktop">
@@ -89,18 +89,18 @@
     <a href="/delete-account/#option-1-delete-it-in-the-app">the in-app deletion steps</a>.</p>
   </div>
   <p class="lede">Fiber Color Code is a field tool for fiber optic technicians. This policy
-  describes exactly what the app collects, why, who it is shared with, and how long it is kept.
-  It is written against what the software actually does, not from a template.</p>
+  describes what the app and this website collect, why, who it is shared with, and how long it
+  is kept. Feature availability can vary by app version and platform.</p>
 
   <p>The app is operated by <strong>Fiber Education</strong>, a sole proprietorship based in
   Kentucky, United States ("we", "us", "our"). Contact us at
   <a href="mailto:privacy@fibercolorcode.app">privacy@fibercolorcode.app</a>.</p>
 
   <h2 id="who-this-policy-covers" tabindex="-1">1. Who this policy covers</h2>
-  <p>Fiber Color Code is sold to contracting companies and used by their crews. That means two
-  kinds of people use it:</p>
+  <p>Fiber Color Code is used by individual technicians, contracting companies, and their crews.
+  This policy covers:</p>
   <ul>
-    <li><strong>Account holders</strong> &mdash; the person or company that buys a workspace.</li>
+    <li><strong>Account holders</strong> &mdash; the person or company that creates or buys a workspace.</li>
     <li><strong>Crew members</strong> &mdash; technicians invited into an organization or team by
     their employer.</li>
   </ul>
@@ -123,12 +123,17 @@
   <h3>Work content you create</h3>
   <ul>
     <li>Splice plans: the location name you type, cable configurations, fiber counts, case
-    types, and the generated splice assignments.</li>
+    types, and the generated splice assignments. In app versions that support field notes,
+    this also includes plan notes, reported problems, affected destinations, and resolutions.</li>
     <li>GPS coordinates attached to a splice plan, when you use the GPS button or pick a point
     on the map.</li>
     <li><strong>Photos</strong> you attach to a plan.</li>
     <li><strong>Handwritten signatures</strong> captured on-device when you sign off a plan,
     stored as an image alongside a SHA-256 hash used to detect later alteration.</li>
+    <li><strong>Approved revision history:</strong> a separate copy of the reviewed plan,
+    photos, and signature, with content hashes, revision identifiers, the signing account's
+    identifier, name and email, server-recorded approval time, and associated job name, customer
+    name, and PO number when present. Later edits do not rewrite that approved record.</li>
     <li>An activity log recording who created, edited, exported, shared, or attached photos to
     each plan, with timestamps and the acting user's email address.</li>
     <li>Organization records: customers, work orders (including PO numbers, scheduled dates,
@@ -164,9 +169,18 @@
   in a support request.</p>
 
   <h3>Stored on your device</h3>
-  <p>The app keeps a local copy of your workspace so it works without signal: a SQLite database
+  <p>The app keeps a local copy of your workspace so it works without signal: a SQLite database and local files
   on iOS and Android, browser storage on the web, plus small preferences such as your last
-  selected workspace. Signing out clears this local copy.</p>
+  selected workspace. Local storage also holds queued changes and media awaiting upload.
+  Completing sign-out clears the app's local account data on that installation.</p>
+
+  <p>In versions with draft recovery, the editor also keeps account-specific recovery drafts
+  on that device. These drafts are not sent to the server unless you explicitly save them as
+  plans; syncing alone does not save them. They remain until saved, discarded, or local app
+  data is cleared, subject to device storage availability. Save drafts you need before
+  signing out, deleting your account, clearing browser data, or changing installations.</p>
+  <p>This website stores your selected light or dark theme in your browser's local storage.
+  You can remove that preference by clearing this website's site data.</p>
 
   <h2 id="location-data-and-workforce-tracking" tabindex="-1">3. Location data and workforce tracking</h2>
 
@@ -247,7 +261,12 @@
     <li><strong>Deleted items</strong> (plans, templates, teams, organizations, and user
     profiles) are soft-deleted first and recoverable for <strong>30 days</strong>, then
     permanently erased by an automated daily job, including associated photos and signature
-    files.</li>
+    files and approved revision history.</li>
+    <li><strong>Approved records</strong> stay with the plan while it exists, including when
+    the current plan is edited or a photo is removed from it. Deleting a signing user's account
+    does not remove approved records held by a surviving shared workspace. The deletion and
+    backup periods in this section still apply; protection from editing is not permanent
+    retention.</li>
     <!-- #Claude — Retention is a count of successful exports, not a maximum age. -->
     <li><strong>Backups.</strong> Organization backups are scheduled nightly. After a successful
     export, we prune older copies to retain the most recent 14. This is a limit on the number
@@ -270,8 +289,10 @@
   <h2 id="your-rights-and-choices" tabindex="-1">7. Your rights and choices</h2>
   <ul>
     <li><strong>Access and portability</strong> &mdash; Profile &rarr; Export My Data produces a
-    JSON file containing your profile and every workspace's plans and templates. Individual plans
-    export as PDF or CSV.</li>
+    JSON file containing your profile and the plans and templates in your accessible
+    workspaces. It does not include image files, the separate approved revision history, or
+    unsaved recovery drafts. Export approved as-built PDFs separately, and keep any original
+    media you need. Individual plans also export as PDF or CSV.</li>
     <li><strong>Correction</strong> &mdash; edit your profile in the app at any time.</li>
     <li><strong>Deletion</strong> &mdash; Profile &rarr; Delete Account, or see
     <a href="/delete-account/">our deletion page</a>. If you cannot sign in, email us.</li>
@@ -285,10 +306,11 @@
   and we will tell you if that is the case.</p>
 
   <h2 id="security" tabindex="-1">8. Security</h2>
-  <p>Data is encrypted in transit. Access is enforced server-side by security rules evaluated on
-  every read and write, so membership in a team or organization determines what you can reach
-  &mdash; it is not enforced only in the app. Signature images are write-once and carry a content
-  hash. Uploads are attributed to the uploading account and rate-limited. Administrative
+  <p>Data is encrypted in transit. Access is enforced by server-side security rules and
+  authorization checks in server functions, using team and organization membership. Approved
+  revisions are created through a server function, with separate copies of the reviewed photos
+  and signature and verified content hashes. The app does not allow users to overwrite those
+  approved records. Uploads are attributed to the uploading account and rate-limited. Administrative
   operations such as account restoration run through verified server functions rather than
   trusting the client.</p>
   <p>No system is perfectly secure, and we cannot guarantee absolute security. If a breach
